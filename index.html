@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex&Co | Welcome</title>
+    <style>
+        /* General Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background Video */
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        /* Content Styling */
+        header {
+            text-align: center;
+            z-index: 2;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #f1c40f;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #b3b3b3;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        nav button {
+            padding: 12px 25px;
+            border: 1px solid #444;
+            background: transparent;
+            color: #eaeaea;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav button:hover {
+            background: #f1c40f;
+            color: #1a1a1a;
+            border-color: #f1c40f;
+        }
+
+        /* Loader */
+        #loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        #loader-container.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #444;
+            border-top-color: #f1c40f;
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            color: #f1c40f;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Spin animation */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Styles */
+        /* Phones (max-width 600px) */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            nav button {
+                width: 80%;
+                font-size: 1.1rem;
+                margin: 10px 0;
+            }
+        }
+
+        /* Tablets (max-width 1024px) */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            nav button {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Desktops (min-width 1024px) */
+        @media (min-width: 1024px) {
+            header h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* TVs (min-width 1500px) */
+        @media (min-width: 1500px) {
+            header h1 {
+                font-size: 4rem;
+            }
+            nav button {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop>
+        <source src="video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Page Content -->
+    <header>
+        <h1>Codex&Co</h1>
+        <p>Innovating the future, one project at a time.</p>
+    </header>
+
+    <nav>
+        <button id="about-btn">About Us</button>
+        <button id="services-btn">Our Services</button>
+        <button id="projects-btn">Projects</button>
+        <button id="contact-btn">Contact</button>
+    </nav>
+
+    <!-- Loader -->
+    <div id="loader-container">
+        <div class="custom-loader"></div>
+        <p class="loader-text">Hold on, we're getting this ready...</p>
+    </div>
+
+    <script>
+        // JavaScript to handle button click and show the loader
+        document.querySelectorAll('button').forEach((button) => {
+            button.addEventListener('click', () => {
+                const loader = document.getElementById('loader-container');
+                loader.classList.add('active'); // Show loader
+
+                // Simulate a delay for the loading effect
+                setTimeout(() => {
+                    loader.classList.remove('active'); // Hide loader
+                    alert("This page is under development.");
+                }, 2500); // 2.5-second delay
+            });
+        });
+    </script>
+
+</body>
+</html>
